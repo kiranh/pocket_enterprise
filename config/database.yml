@@ -1,0 +1,20 @@
+mysql: &mysql
+  adapter: mysql2
+  host: localhost
+  username: root
+  password: password
+  pool: 5
+  timeout: 5000
+
+common: &common
+  # Choose one of the following
+  <<: *mysql
+  #<<: *postgres
+
+development:
+  <<: *common
+  database: pocket_enterprise_dev
+
+production:
+  <<: *common
+  database: pocket_enterprise_prod
