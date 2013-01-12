@@ -1,0 +1,17 @@
+%h1 Listing contacts_groups
+%table
+  %tr
+    %th Contact
+    %th Group
+    %th
+    %th
+    %th
+  - @contacts_groups.each do |contacts_group|
+    %tr
+      %td= contacts_group.contact
+      %td= contacts_group.group
+      %td= link_to 'Show', contacts_group
+      %td= link_to 'Edit', edit_contacts_group_path(contacts_group)
+      %td= link_to 'Destroy', contacts_group, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Contacts group', new_contacts_group_path

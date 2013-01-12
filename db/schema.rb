@@ -11,7 +11,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109102622) do
+ActiveRecord::Schema.define(:version => 20130112143042) do
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "owner_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "contacts", ["owner_id"], :name => "index_contacts_on_owner_id"
+  add_index "contacts", ["user_id"], :name => "index_contacts_on_user_id"
+
+  create_table "contacts_groups", :force => true do |t|
+    t.integer  "contact_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "contacts_groups", ["contact_id"], :name => "index_contacts_groups_on_contact_id"
+  add_index "contacts_groups", ["group_id"], :name => "index_contacts_groups_on_group_id"
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "owner_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "groups", ["owner_id"], :name => "index_groups_on_owner_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

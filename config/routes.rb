@@ -1,4 +1,13 @@
 PocketEnterprise::Application.routes.draw do
+  resources :groups
+
+
+  resources :contacts
+
+
+  resources :contacts_groups
+
+
   devise_for :users
 
   # The priority is based upon order of creation:

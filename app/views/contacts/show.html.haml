@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %b User:
+  = @contact.user
+%p
+  %b Owner:
+  = @contact.owner
+= link_to 'Edit', edit_contact_path(@contact)
+|
+\#{link_to 'Back', contacts_path}
